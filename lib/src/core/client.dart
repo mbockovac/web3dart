@@ -385,9 +385,9 @@ class Web3Client {
       chainId: signingInput.chainId,
     );
   }
-    Future<dynamic> signRawTransaction(
+    Uint8List signRawTransaction(
       Credentials cred, Transaction transaction) async {
-    var signed = await signTransactionRaw(transaction, cred, chainId: null);
+    var signed = signTransactionRaw(transaction, cred, chainId: null);
     return signed;
   }
 

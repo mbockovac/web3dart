@@ -108,7 +108,7 @@ Uint8List signTransactionRaw(
   final encoded = transaction.getUnsignedSerialized(chainId: chainId);
   final signature = c.signToEcSignature(encoded, chainId: chainId, isEIP1559: transaction.isEIP1559);
 
-  if (transaction.isEIP1559 && chainId != null) {
+  if (transaction.isEIP1559 && chainId) {
     return uint8ListFromList(
       rlp.encode(
         _encodeEIP1559ToRlp(transaction, signature, BigInt.from(chainId)),
