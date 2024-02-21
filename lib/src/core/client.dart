@@ -385,6 +385,11 @@ class Web3Client {
       chainId: signingInput.chainId,
     );
   }
+    Future<dynamic> signRawTransaction(
+      Credentials cred, Transaction transaction) async {
+    var signed = await signTransactionRaw(modifiedTransaction, cred, chainId: null));
+    return signed;
+  }
 
   /// Calls a [function] defined in the smart [contract] and returns it's
   /// result.
