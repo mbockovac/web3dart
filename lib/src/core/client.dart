@@ -348,7 +348,7 @@ class Web3Client {
 
   Uint8List signRawTransaction(
       Credentials cred, Transaction transaction) {
-    var signed = await signTransactionRaw(transaction, cred, chainId: null);
+    var signed = signTransactionRaw(transaction, cred, chainId: null);
     return signed;
   }
 
