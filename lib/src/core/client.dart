@@ -346,6 +346,12 @@ class Web3Client {
     return sendRawTransaction(signed);
   }
 
+  Uint8List signRawTransaction(
+      Credentials cred, Transaction transaction) {
+    var signed = await signTransactionRaw(transaction, cred, chainId: null);
+    return signed;
+  }
+
   /// Sends a raw, signed transaction.
   ///
   /// To obtain a transaction in a signed form, use [signTransaction].
@@ -368,7 +374,7 @@ class Web3Client {
   Future<Uint8List> signTransaction(
     Credentials cred,
     Transaction transaction, {
-    int? chainId = 1,
+    int? chainId = -4,
     bool fetchChainIdFromNetworkId = false,
   }) async {
     final signingInput = await _fillMissingData(
@@ -376,7 +382,7 @@ class Web3Client {
       transaction: transaction,
       chainId: chainId,
       loadChainIdFromNetwork: fetchChainIdFromNetworkId,
-      client: this,
+      // client: this,
     );
 
     return signTransactionRaw(
@@ -384,11 +390,6 @@ class Web3Client {
       signingInput.credentials,
       chainId: signingInput.chainId,
     );
-  }
-    Uint8List signRawTransaction(
-      Credentials cred, Transaction transaction){
-    var signed = signTransactionRaw(transaction, cred, chainId: null);
-    return signed;
   }
 
   /// Calls a [function] defined in the smart [contract] and returns it's
