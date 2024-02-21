@@ -353,7 +353,7 @@ class Web3Client {
   /// Returns a hash of the transaction which, after the transaction has been
   /// included in a mined block, can be used to obtain detailed information
   /// about the transaction.
-  Future<String> sendRawTransaction(Uint8List signedTransaction) async {
+  Future<String> sendRawTransaction(Uint8List signedTransaction) {
     return makeRPCCall('eth_sendRawTransaction', [
       bytesToHex(signedTransaction, include0x: true, padToEvenLength: true),
     ]);
