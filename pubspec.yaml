@@ -8,7 +8,7 @@ environment:
   sdk: ">=2.12.0 <4.0.0"
 
 dependencies:
-  pointycastle: ^3.7.3
+  pointycastle: ^3.7.4
   sec: ^1.1.0
   http: ">=0.13.1 <2.0.0"
   uuid: ^4.0.0
